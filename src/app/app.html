@@ -1,0 +1,41 @@
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title color="light">Welcome To JokerLeb</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item menuClose no-lines text-uppercase no-padding *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon name="{{p.icon}}" item-left></ion-icon>
+        {{p.title}}
+      </ion-item>
+      <ion-item menuClose no-lines text-uppercase no-padding class="new-post" (click)="goTo('AddPage')">
+        <ion-icon name="md-add-circle" color="grayColor" item-left></ion-icon>
+        Post An Ad
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer>
+    <div *ngIf="token !== undefined">
+      <ion-buttons class="log-out" end>
+        <button ion-button text-lowercase icon-right clear menuClose (click)="goTo(LoginPage)">
+          Logout
+          <ion-icon color="grayColor " name="ios-log-out " large></ion-icon>
+        </button>
+      </ion-buttons>
+    </div>
+    <div *ngIf="token">
+      <ion-buttons class="log-in" end>
+        <button ion-button text-lowercase icon-right clear menuClose (click)="logout() ">
+          Login
+          <ion-icon color="grayColor " name="ios-log-in " large></ion-icon>
+        </button>
+      </ion-buttons>
+    </div>
+  </ion-footer>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage " #content swipeBackEnabled="false "></ion-nav>

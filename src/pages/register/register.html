@@ -1,0 +1,36 @@
+<ion-header class="form-header">
+  <ion-navbar color="primary"></ion-navbar>
+</ion-header>
+
+<ion-content class="form-content" padding>
+  <div class="Loginpage">
+      <div class="formContainer">
+        <form  class="app-form" text-center>
+          <ion-list>
+            <div class="user-name">
+                 <ion-item no-padding no-lines>
+                  <ion-label floating>First name</ion-label>
+                  <ion-input type="text"></ion-input>
+                 </ion-item>
+                 <ion-item no-padding no-lines>
+                   <ion-label floating>Last name</ion-label>
+                   <ion-input type="text"></ion-input>
+                 </ion-item>
+             </div>
+            <ion-item no-padding no-lines>
+              <ion-label floating>Email</ion-label>
+              <ion-input type="email"></ion-input>
+            </ion-item>
+            <ion-item no-padding no-lines> 
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password"></ion-input>
+            </ion-item>
+          </ion-list>
+          <button ion-button block strong text-uppercase color="grayColor" [navPush]="'HomePage'">create account</button>
+          <p class="bold or" color="light">OR</p>
+          <button ion-button block strong text-uppercase class="social-btns" color="light">Sign in with Twitter</button>
+          <button ion-button block strong text-uppercase class="social-btns" color="light">Sign in with Facebook</button>
+        </form>
+      </div>
+  </div>
+</ion-content>

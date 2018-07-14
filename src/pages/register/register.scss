@@ -1,0 +1,9 @@
+.user-name{
+    display: flex;
+    .item-md{
+        width: 50%;
+        &:nth-of-type(1){
+            margin-right: 10px;
+        }    
+    }
+}

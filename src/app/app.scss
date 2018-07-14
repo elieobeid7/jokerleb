@@ -1,0 +1,149 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+.back-button-md{
+    margin: 0;
+}
+.toolbar-title{
+    font-weight: normal;
+}
+.head-btns{
+    .bar-button-md{
+        width: 40px;
+        margin-right: 0;
+        margin-left: 5px;
+        ion-icon{
+            font-size: 1.9rem;
+        }
+    }
+}
+.activeText{
+    color: black !important;
+    h4{
+        color: black !important;
+    }
+}
+.activeColor{
+    color: color($colors,secondary) !important;
+}
+.bold{
+    font-weight: bold !important;
+}
+h4{
+    font-size: 1.65rem;
+}
+
+// App statusbar(IOS platform) Sass
+// --------------------------------------------------
+.statusbar-padding{
+    padding-top: calc(20px + 4px);
+    min-height: calc(56px + 20px);
+    &.search-toolbar{
+        top: 24px;
+        padding-top: 4px;
+        min-height: 45px;
+    }
+    &.home-content{
+        .scroll-content{
+            padding-top: 76px !important;
+        }
+    }
+    .tabs{
+        top: 115px;
+        transition: all .35s ease-in-out;
+        -webkit-transition: all .35s ease-in-out;
+    }
+    .sub-header{
+        top: 75px;
+        transition: all .35s ease-in-out;
+        -webkit-transition: all .35s ease-in-out;
+    }
+}
+.md ion-menu{
+    .menu-inner{
+        ion-header{
+            .toolbar.statusbar-padding{
+                &:first-child{
+                    min-height: 180px;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 767px){
+    .md .modal-wrapper > .ion-page > ion-header > .share-toolbar.statusbar-padding:first-child{
+        padding-top: 4px;
+        min-height: 56px;
+    }
+}
+// App Main Menu Sass
+// --------------------------------------------------
+ion-menu{
+    ion-header{
+        &::after{
+            display: none;
+        }
+    }
+    .toolbar-md{
+        min-height: 160px;
+        align-items: flex-end;
+    }
+    .toolbar-background-md{
+        @extend %cover;
+        background-image: url(../assets/img/user-img.png) !important;
+    }
+    .toolbar-title-md{
+        color: color($colors , light);
+        padding-bottom: 10px;
+        font-size: 1.4rem;
+    }
+    .content-md{
+        background-color: color($colors , primary);
+    }
+    ion-list{
+        padding: 10px 15px;
+    }
+    .item-md{
+        background: none;
+        color: white;
+        font-size: 1.3rem;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+    .item{
+        ion-icon{
+            font-size: 2rem;
+            min-height: 2rem;
+        }
+    }
+    .new-post{
+        border-top: 1px solid color($colors , lightenGray) !important;
+        padding: 10px 0;
+        margin-top: 10px;
+        ion-icon{
+            font-size: 2.3rem;
+            min-height: 2.3rem;
+        }
+    }
+    .log-out{
+        .button-clear-md{
+            color: white;
+            font-size: 1.3rem;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+        [icon-right]{
+            ion-icon{
+                font-size: 2.2em;
+            }
+        }
+    }
+    .footer-md{
+        padding-bottom: 10px;
+        &::before{
+            display: none;
+        }
+    }
+}

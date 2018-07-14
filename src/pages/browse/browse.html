@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle start>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+    <ion-title text-capitalize>Browse ads</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+
+<ion-content>
+  <ion-searchbar class="search-item" placeholder="search for your item here"></ion-searchbar>
+  <div class="options-filter" padding-right padding-left padding-bottom>
+    <ion-label><img src="assets/img/dollar.png" />Price</ion-label>
+    <div padding-horizontal>
+      <ion-item no-lines no-padding>
+        <ion-range [(ngModel)]="dualValue2" color="secondary" min="0" max="1000" dualKnobs="true" debounce="10"no-padding></ion-range>
+      </ion-item>
+      <ion-row> 
+        <ion-col col-6>
+          <button ion-button block color="lightenGray">$ {{dualValue2.lower}}</button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button block color="lightenGray">$ {{dualValue2.upper}}</button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <ion-searchbar class="search-area" placeholder="search for your area here"></ion-searchbar>
+  <div class="options-filter map-filter" padding-right padding-left padding-bottom>
+    <img src="https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap&center=%2040.714728,-73.998672&markers=color:red%7Clabel:P%7C40.714728,-73.998672%20&markers=color:green%7Clabel:D%7C40.714728,-73.988772" />
+  </div>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle start>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+    <ion-title text-capitalize>Post new ad</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="add-img" (click)="presentActionSheet()" text-center>
+    <img src="assets/img/add-icon.png" />
+  </div>
+  <ion-list>
+    <ion-item no-padding>
+      <ion-label color="grayText" fixed>Title</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="title"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label color="grayText">Category</ion-label>
+      <ion-select [(ngModel)]="category">
+        <ion-option value="car">Car</ion-option>
+        <!--         <ion-option value="Mobile">Mobile</ion-option>
+        <ion-option value="Pets">Pets</ion-option>
+        <ion-option value="Fashion">Fashion</ion-option>  -->
+      </ion-select>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label color="grayText">Location</ion-label>
+      <ion-select [(ngModel)]="city">
+        <ion-option value="beirut">Beirut</ion-option>
+        <!--        <ion-option value="India">India</ion-option>
+        <ion-option value="France">France</ion-option>
+        <ion-option value="Egypt">Egypt</ion-option> -->
+      </ion-select>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label color="grayText" fixed [(ngModel)]="phone_number">Phone number</ion-label>
+      <ion-input type="tel" value=""></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label color="grayText" fixed [(ngModel)]="email">Email address</ion-label>
+      <ion-input type="email"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label color="grayText" fixed [(ngModel)]="price">Price</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <ion-item no-padding>
+      <ion-label color="grayText" [(ngModel)]="content" fixed>Description</ion-label>
+      <ion-textarea rows="3"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button block text-uppercase class="social-btns" color="secondary" (click)="onAddAd()">Post</button>
+</ion-content>

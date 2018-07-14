@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle start>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+    <ion-title text-capitalize>my Ads</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card [navPush]="'SecDetailsPage'" class="category-card">
+      <img src="assets/img/img1.png" />
+      <div class="card-title" text-uppercase>
+        <h4 color="secondary">Houses in Ciudad Managu</h4>
+        <p color="dark">$1,500.00</p>
+        <p color="grayText" class="time">2 Day ago</p>
+      </div>
+  </ion-card>
+
+  <ion-card [navPush]="'SecDetailsPage'" class="category-card">
+      <img src="assets/img/img2.png" />
+      <div class="card-title" text-uppercase>
+        <h4 color="secondary">Houses in Ciudad Managu</h4>
+        <p color="dark">$1,500.00</p>
+        <p color="grayText" class="time">2 Day ago</p>
+      </div>
+  </ion-card>
+</ion-content>

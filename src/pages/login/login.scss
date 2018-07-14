@@ -1,0 +1,59 @@
+.form-header{
+    &::after{
+        display: none;
+    }
+    .toolbar-background-md{
+        background: none;
+    }
+}
+.form-content{
+    @extend %main-bg;
+    @extend %cover;
+    p{
+        font-weight: normal !important;
+        color: color($colors,light);
+    }
+}
+.Loginpage{
+    display: flex;
+    align-items: flex-end;
+    min-height: 100%;
+    .formContainer{
+        width: 100%;
+        margin-bottom: 15px;
+    }
+}
+.app-form{
+    .list-md{
+        padding: 10px;
+        margin-bottom: 40px;
+        .item-md{
+            background: none;
+            border-bottom: 1px solid rgba(color($colors , light) , .6) !important;
+        }
+        ion-label{
+            color: rgba(color($colors , light) , .6);
+            font-size: 1.55rem;
+        }
+    }
+    .text-input{
+        color: white;
+    }
+    .label-md[floating]{
+        color: rgba(color($colors , light) , .6);
+    }
+    .button-md{
+        font-size: 2rem;
+        color: color($colors , primary);
+        font-weight: 500;
+    }
+    .social-btns{
+        font-size: 1.43rem;
+        text-transform: capitalize !important;
+        color: black;
+    }
+    .or{
+        font-size: 1.6rem;
+        margin-top: 33px;
+    }
+}

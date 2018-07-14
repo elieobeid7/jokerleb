@@ -1,0 +1,80 @@
+page-details {
+    .main-list{
+        padding: 0;
+        .item-md{
+            margin: 0;
+            background-color: color($colors , grayColor);
+        }
+        ion-thumbnail{
+            background: white;
+        }
+        h2{
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 5px !important;
+        }
+        p{
+            white-space: normal !important;
+            font-size: 1.3rem;
+            max-height: 30px;
+            position: relative;
+            padding-left: 15px;
+            ion-icon{
+                margin-right: 3px;
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+}
+// Head Of Details
+// --------------------------------------------------
+.detail-content{
+    border-bottom: 1px solid color($colors , grayText);
+    h4{
+        color: color($colors,secondary);
+    }
+    h2{
+        font-size: 1.45rem;
+        font-weight: normal;
+        margin-bottom: 0;
+        color: color($colors,grayText);
+    }
+    p{
+        margin-top: 3px;
+    }
+}
+// More Of Details
+// --------------------------------------------------
+.more-det{
+    @extend %box-shadow;
+    border: none;
+    h4{
+        margin-bottom: 10px;
+    }
+    h2, p{
+        margin: 0 0 2px 0;
+    }
+}
+// footer style
+//----------------------------
+.detFooter{
+    padding: 10px;
+    [col-6]{
+        display:  grid;
+        align-items: center;
+        font-size: 2.2rem;
+        p{
+            font-size: 1.7rem;
+        }
+    }
+    .button-md{
+        margin: 0;
+        &.call{
+            margin-right: 5px;
+        }
+        &.mail{
+            margin-left: 5px;
+        }
+    }
+}

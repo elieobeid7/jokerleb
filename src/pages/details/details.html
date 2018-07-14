@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle start>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+    <ion-title text-capitalize>details</ion-title>
+    <ion-buttons class="head-btns" end>
+      <button (click)="presentshareModal()" ion-button icon-only>
+        <ion-icon name="md-share"></ion-icon>
+      </button>
+      <button (click)="Like()" ion-button icon-only>
+        <ion-icon name="md-heart" [ngClass]="{'activeColor':active==true}"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+<!--           section of Head          -->
+  <ion-list class="main-list"  no-margin>
+    <ion-item no-lines no-padding>
+      <ion-thumbnail item-left>
+        <img src="assets/img/thum.png" />
+      </ion-thumbnail>
+      <h2>Software engineer</h2>
+      <p>
+        <ion-icon name="md-pin"></ion-icon>
+        Technology work Palo Alto, CA, US
+      </p>
+    </ion-item>
+  </ion-list>
+<!--           section of Description          -->
+  <div class="detail-content" margin>
+    <h4 no-margin>About the Job</h4>
+
+    <h2 text-uppercase>RESPONSIBILITIES:</h2>
+    <p>At Uber, we're putting first-class, on-demand 
+    transportation at everyone's fingertips. Are you ready 
+    to help us change the world?</p>
+    <h2 text-uppercase>RESPONSIBILITIES:</h2>
+    <p>Architect, build, test and launch solution to migrate the 
+    entirety of our old Applicant Tracking Systems 
+    (Greenhouse, Lever) to the new one (iCIMS) Provide 
+    timely status reports to business stakeholders Work 
+    with 3rd party vendors to complete migration effort</p>
+    <h2 text-uppercase>DESIRED SKILLS:</h2>
+    <p>ntermediate to expert proficiency with SQL.
+    Experience pipelining data (ETL) in an imperfect 
+    environment-retrying through rate limits, http errors, 
+    network issues, etc.</p>
+  </div>
+<!--           section of Details          -->
+  <div class="detail-content more-det" padding-right padding-left padding-bottom>
+    <h4 no-margin>EDUCATION:</h4>
+
+    <p>Accredited Bachelor's Degree</p>
+    <h2 text-uppercase>WORK HOURS:</h2>
+    <p>5/40, First Shift</p>
+    <h2 text-uppercase>PAY RATE:</h2>
+    <p>$DOE</p>
+    <h2 text-uppercase>DURATION:</h2>
+    <p>6 Months</p>
+  </div>
+</ion-content>
+
+<ion-footer class="detFooter">
+  <ion-grid no-padding>
+    <ion-row text-center>
+      <ion-col col-6>
+        <button ion-button icon-only color="secondary" class="call">
+          <ion-icon name="md-call" color="light"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button icon-only color="primary" class="mail">
+          <ion-icon name="md-mail" color="light"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

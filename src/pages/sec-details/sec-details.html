@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle start>
+      <ion-icon name="md-menu"></ion-icon>
+    </button>
+    <ion-title text-capitalize>details</ion-title>
+    <ion-buttons class="head-btns" end>
+      <button (click)="presentshareModal()" ion-button icon-only>
+        <ion-icon name="md-share"></ion-icon>
+      </button>
+      <button (click)="Like()" ion-button icon-only>
+        <ion-icon name="md-heart" [ngClass]="{'activeColor':active}"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="detail-img"></div>
+  <ion-item no-padding no-lines>
+    <h2>{{item?.title.rendered}}</h2>
+    <p>
+      <ion-icon name="md-pin"></ion-icon>
+      {{item.country}} &nbsp; {{item?.state}} &nbsp; {{item?.city}} &nbsp; {{item?.street}}
+    </p>
+    <h2 class="price" item-right>${{item?.price}}</h2>
+  </ion-item>
+  <!--           section of Images          -->
+  <div class="images detail-content" margin>
+    <h4>Images</h4>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-3>
+          <img src="assets/img/01.png" #myImage1 (click)="presentImage(myImage1)" />
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/img/02.png" #myImage2 (click)="presentImage(myImage2)" />
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/img/03.png" #myImage3 (click)="presentImage(myImage3)" />
+        </ion-col>
+        <ion-col col-3>
+          <img src="assets/img/04.png" #myImage4 (click)="presentImage(myImage4)" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!--           section of Description          -->
+  <div class="detail-content" margin>
+    <h4 color="secondary">Description</h4>
+    <p innerHtml="{{item.content.rendered}}"> </p>
+  </div>
+</ion-content>
+
+<ion-footer class="detFooter">
+  <ion-grid no-padding>
+    <ion-row text-center>
+      <ion-col col-6>
+        <a href="tel:+ {{item.phone_number}}">
+          <button ion-button icon-only color="secondary" class="call">
+            <ion-icon name="md-call" color="light"></ion-icon>
+          </button>
+        </a>
+      </ion-col>
+      <ion-col col-6>
+        <a href="mailto:{{item.email}}">
+          <button ion-button icon-only color="primary" class="mail">
+            <ion-icon name="md-mail" color="light"></ion-icon>
+          </button>
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

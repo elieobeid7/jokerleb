@@ -1,0 +1,22 @@
+<ion-content class="form-content" padding>
+  <div class="Loginpage">
+    <div class="formContainer">
+      <ion-list>
+        <ion-item no-padding no-lines>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="text" placeholder="Email or username" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item no-padding no-lines>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button block strong text-uppercase color="grayColor" (click)="onLogin()">login</button>
+      <p class="bold" [navPush]="'RegisterPage'">No account yet? Create one</p>
+      <!--           <p class="bold or">OR</p>
+          <button ion-button block text-uppercase class="social-btns" color="light">Sign in with Facebook</button> -->
+      <p class="bold" [navPush]="'HomePage'">Continue as a guest</p>
+
+    </div>
+  </div>
+</ion-content>
