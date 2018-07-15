@@ -1,4 +1,4 @@
-# Please follow this steps to run the application 
+## Please follow these steps to run the application 
 
 1. npm install 
 2. ionic serve
