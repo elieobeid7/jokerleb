@@ -5,7 +5,7 @@
 3. ionic platform add android/ios
 4. ionic build android/ios --prod
 
-- Note:To control the animation in the app(if it exists) their will be one of this two ways:
+- Note: To control the animation in the app(if it exists) their will be one of this two ways:
 
 1. There's a checkbox in the setting to on/off the animations in the app.
 
@@ -14,5 +14,19 @@
 ```javascript
 export const APP_CONFIG = {
    ALLOW_ANIMATION:true
-};`
+};
 ```
+
+___
+
+Missing features
+
+- Facebook login
+- Categories
+- Ad Images
+- Post an ad
+- Search
+- Favorite
+- Hide Login button when logged out
+- Hide Log out button when logged in
+- Only logged in users should be able to post an ad
