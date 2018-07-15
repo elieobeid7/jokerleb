@@ -19,7 +19,7 @@ export const APP_CONFIG = {
 
 ___
 
-Missing features
+## Missing features
 
 - Facebook login
 - Categories
