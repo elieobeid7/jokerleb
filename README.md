@@ -23,10 +23,11 @@ ___
 
 - Facebook login
 - Categories
-- Ad Images
+~~- Ad Images~~
 - Post an ad
 - Search
 - Favorite
 - Hide Login button when logged out
 - Hide Log out button when logged in
 - Only logged in users should be able to post an ad
+- Registration
