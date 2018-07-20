@@ -23,7 +23,7 @@ ___
 
 - Facebook login
 - Categories
-~~- Ad Images~~
+- ~~Ad Images~~
 - Post an ad
 - Search
 - Favorite
@@ -31,3 +31,4 @@ ___
 - Hide Log out button when logged in
 - Only logged in users should be able to post an ad
 - Registration
+- Add app icon and remove spninner

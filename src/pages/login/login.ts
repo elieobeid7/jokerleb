@@ -16,7 +16,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 })
 export class LoginPage {
 
-  email;
+  username;
   password;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
@@ -30,8 +30,8 @@ export class LoginPage {
   }
 
   onLogin() {
-    console.log(this.email, this.password);
-    this.authProvider.postLogin(this.email, this.password).subscribe(data => {
+    console.log(this.username, this.password);
+    this.authProvider.postLogin(this.username, this.password).subscribe(data => {
       console.log(data);
       localStorage.setItem('wpIonicToken', JSON.stringify(data));
     });

@@ -50,9 +50,8 @@
   <div class="all-lists">
     <div class="all-category" *ngSwitchCase="1">
       <ion-card class="category-card" *ngFor="let item of items" (click)="onShowItemDetail(item);">
-        <!--         <span *ngFor="let thumb of thumbs">
-          <img src="{{thumb.media_details.sizes.shop_thumbnail.source_url}}" />
-        </span> -->
+        <img src="{{item.media[item.media.length-1].media_details.sizes.medium.source_url}}" />
+
         <ion-icon name="md-heart" class="like-icon" color="light"></ion-icon>
         <div class="card-title" text-uppercase>
           <h4 color="secondary">{{item?.title.rendered}}</h4>

@@ -18,22 +18,18 @@
     </ion-list>
   </ion-content>
   <ion-footer>
-    <div *ngIf="token !== undefined">
-      <ion-buttons class="log-out" end>
-        <button ion-button text-lowercase icon-right clear menuClose (click)="goTo(LoginPage)">
-          Logout
-          <ion-icon color="grayColor " name="ios-log-out " large></ion-icon>
-        </button>
-      </ion-buttons>
-    </div>
-    <div *ngIf="token">
-      <ion-buttons class="log-in" end>
-        <button ion-button text-lowercase icon-right clear menuClose (click)="logout() ">
-          Login
-          <ion-icon color="grayColor " name="ios-log-in " large></ion-icon>
-        </button>
-      </ion-buttons>
-    </div>
+    <ion-buttons *ngIf="token" class="log-out" end>
+      <button ion-button text-lowercase icon-right clear menuClose (click)="logout()">
+        Logout
+        <ion-icon color="grayColor" name="ios-log-out" large></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons *ngIf="!token" class="log-out" end>
+      <button ion-button text-lowercase icon-right clear menuClose (click)="goTo('LoginPage')">
+        Login
+        <ion-icon color="grayColor" name="ios-log-in" large></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-footer>
 </ion-menu>
 

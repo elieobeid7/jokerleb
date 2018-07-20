@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { ENV } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AdsProvider {
@@ -12,19 +13,24 @@ export class AdsProvider {
   constructor(public http: HttpClient) {
 
   }
-
-  getAds(page, infiniteScroll) {
-    return this.http.get(this.api_url + page);
+  getAds(page): Observable<any[]> {
+    return this.http.get(this.api_url + page)
+      .flatMap((ads: any[]) => {
+        if (ads.length > 0) {
+          return Observable.forkJoin(
+            ads.map((ad: any) => {
+              return this.http.get(this.ads_thumb_url + ad.id)
+                .map((res: any) => {
+                  let media: any = res;
+                  ad.media = media;
+                  return ad;
+                });
+            })
+          );
+        }
+        return Observable.of([]);
+      });
   }
-  getAdsDetails(id) {
-    return this.http.get(this.api_url + id);
-  }
-
-  getAdsThumb(id) {
-    return this.http.get(this.ads_thumb_url + id);
-  }
-
-
   postAds(content, author) {
     let data = {
       title: content,
@@ -37,10 +43,9 @@ export class AdsProvider {
       writer: author,
       status: 'publish'
     };
-    console.log(data);
 
     let token = JSON.parse(localStorage.getItem('wpIonicToken')).token;
-    console.log(token);
+
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
