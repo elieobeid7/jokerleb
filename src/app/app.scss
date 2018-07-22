@@ -86,14 +86,14 @@ ion-menu{
             display: none;
         }
     }
-    .toolbar-md{
+/*     .toolbar-md{
         min-height: 160px;
         align-items: flex-end;
     }
     .toolbar-background-md{
         @extend %cover;
         background-image: url(../assets/img/user-img.png) !important;
-    }
+    } */
     .toolbar-title-md{
         color: color($colors , light);
         padding-bottom: 10px;

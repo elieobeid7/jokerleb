@@ -22,13 +22,14 @@ ___
 ## Missing features
 
 - Facebook login
+- Favorite
 - Categories
-- ~~Ad Images~~
 - Post an ad
 - Search
-- Favorite
+- Registration
 - Hide Login button when logged out
 - Hide Log out button when logged in
 - Only logged in users should be able to post an ad
-- Registration
 - Add app icon and remove spninner
+- Profile
+- My ads

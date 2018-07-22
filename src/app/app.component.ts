@@ -18,16 +18,13 @@ export class MyApp {
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-
-
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: 'HomePage', icon: 'md-home' },
-      { title: 'Browse ads', component: 'BrowsePage', icon: 'md-search' },
-      { title: 'Profile', component: 'ProfilePage', icon: 'md-person' },
-      { title: 'my ads', component: 'MyAdsPage', icon: 'md-paper' }
+      { title: 'Home', component: 'HomePage', icon: 'md-home' }
+      /*     { title: 'Browse ads', component: 'BrowsePage', icon: 'md-search' },
+             { title: 'Profile', component: 'ProfilePage', icon: 'md-person' },
+             { title: 'my ads', component: 'MyAdsPage', icon: 'md-paper' }  */
     ];
-
   }
 
   initializeApp() {
@@ -55,6 +52,5 @@ export class MyApp {
   logout() {
     localStorage.clear();
     this.nav.setRoot('HomePage');
-
   }
 }

@@ -5,12 +5,11 @@ import { AdsProvider } from '../../providers/ads/ads';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-search-details',
+  templateUrl: 'search-details.html',
 })
 
-export class HomePage {
-
+export class SearchDetailsPage {
 
   items = [];
   page = 1;
@@ -23,13 +22,15 @@ export class HomePage {
   @ViewChild(Content) content: Content;
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider) {
 
+    this.searchQuery = this.navParams.get('searchQuery');
+    console.log(this.searchQuery);
 
     this.category = [{ img: 'assets/img/img1.png' }, { img: 'assets/img/img2.png' }, { img: 'assets/img/img3.png' }, { img: 'assets/img/img4.png' }, { img: 'assets/img/img1.png' }, { img: 'assets/img/img2.png' }, { img: 'assets/img/img3.png' }, { img: 'assets/img/img4.png' }];
     this.loadAds();
   }
 
   loadAds(infiniteScroll?) {
-    this.adsProvider.getAds(this.page).subscribe((data: any) => {
+    this.adsProvider.searchAds(this.searchQuery, this.page).subscribe((data: any) => {
       this.items = this.items.concat(data);
       console.log(this.items);
       if (infiniteScroll) {

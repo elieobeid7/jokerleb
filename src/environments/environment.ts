@@ -3,5 +3,5 @@ export const ENV = {
     ads_url: 'wp/v2/ads?per_page=20&&page=',
     jwt_url: 'jwt-auth/v1/token',
     ads_thumb_url: 'wp/v2/media?parent=',
-
+    ads_search_url: 'wp/v2/ads?search=',
 };
