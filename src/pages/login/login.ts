@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -18,11 +19,11 @@ export class LoginPage {
 
   username;
   password;
+  error_message: string;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
-    if (localStorage.getItem('wpIonicToken')) {
-      this.navCtrl.setRoot('HomePage');
-    }
+
   }
 
   ionViewDidLoad() {
@@ -34,6 +35,24 @@ export class LoginPage {
     this.authProvider.postLogin(this.username, this.password).subscribe(data => {
       console.log(data);
       localStorage.setItem('wpIonicToken', JSON.stringify(data));
+      if (localStorage.getItem('wpIonicToken')) {
+        this.navCtrl.push(HomePage);
+      }
+
+    } err => {
+      this.error_message = "Invalid credentials. Try with username 'aa' password 'aa'.";
+      console.log(err);
+    });
+  }
+
+  validateLogin() {
+    this.authProvider.validateLogin().subscribe(data => {
+      console.log(data);
+      localStorage.setItem('wpIonicToken', JSON.stringify(data));
+      if (localStorage.getItem('wpIonicToken')) {
+        this.navCtrl.push(HomePage);
+      }
+
     });
   }
 }

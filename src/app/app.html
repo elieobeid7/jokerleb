@@ -11,25 +11,31 @@
         <ion-icon name="{{p.icon}}" item-left></ion-icon>
         {{p.title}}
       </ion-item>
-      <ion-item menuClose no-lines text-uppercase no-padding class="new-post" (click)="goTo('AddPage')">
-        <ion-icon name="md-add-circle" color="grayColor" item-left></ion-icon>
-        Post An Ad
-      </ion-item>
+      <div *ngIf="token==true">
+        <ion-item menuClose no-lines text-uppercase no-padding class="new-post" (click)="goTo('AddPage')">
+          <ion-icon name="md-add-circle" color="grayColor" item-left></ion-icon>
+          Post An Ad
+        </ion-item>
+      </div>
     </ion-list>
   </ion-content>
   <ion-footer>
-    <ion-buttons *ngIf="token" class="log-out" end>
-      <button ion-button text-lowercase icon-right clear menuClose (click)="logout()">
-        Logout
-        <ion-icon color="grayColor" name="ios-log-out" large></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-buttons *ngIf="!token" class="log-out" end>
-      <button ion-button text-lowercase icon-right clear menuClose (click)="goTo('LoginPage')">
-        Login
-        <ion-icon color="grayColor" name="ios-log-in" large></ion-icon>
-      </button>
-    </ion-buttons>
+    <div *ngIf="token==true">
+      <ion-buttons class="log-out" end>
+        <button ion-button text-lowercase icon-right clear menuClose (click)="logout()">
+          Logout
+          <ion-icon color="grayColor" name="ios-log-out" large></ion-icon>
+        </button>
+      </ion-buttons>
+    </div>
+    <div *ngIf="token==false">
+      <ion-buttons class="log-out" end>
+        <button ion-button text-lowercase icon-right clear menuClose (click)="goTo('LoginPage')">
+          Login
+          <ion-icon color="grayColor" name="ios-log-in" large></ion-icon>
+        </button>
+      </ion-buttons>
+    </div>
   </ion-footer>
 </ion-menu>
 

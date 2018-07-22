@@ -25,7 +25,6 @@ ___
 - Favorite
 - Categories
 - Post an ad
-- Search
 - Registration
 - Hide Login button when logged out
 - Hide Log out button when logged in
@@ -33,3 +32,4 @@ ___
 - Add app icon and remove spninner
 - Profile
 - My ads
+- Reset Password

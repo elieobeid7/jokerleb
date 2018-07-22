@@ -2,6 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HomePage } from '../pages/home/home';
+import { AuthProvider } from '../providers/auth/auth';
+
+
 
 
 @Component({
@@ -10,15 +14,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'HomePage';
-  token;
+  rootPage: any = HomePage;
+  token: boolean = false;
 
   pages: Array<any>;
 
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private authProvider: AuthProvider) {
     this.initializeApp();
-    // used for an example of ngFor and navigation
+    if (localStorage.getItem('wpIonicToken')) {
+      this.token = true;
+    }
+    else {
+      this.token = false;
+    }
     this.pages = [
       { title: 'Home', component: 'HomePage', icon: 'md-home' }
       /*     { title: 'Browse ads', component: 'BrowsePage', icon: 'md-search' },
@@ -50,7 +59,18 @@ export class MyApp {
 
   }
   logout() {
+    this.nav.push(HomePage);
     localStorage.clear();
-    this.nav.setRoot('HomePage');
+  }
+
+  validateLogin() {
+    this.authProvider.validateLogin().subscribe(data => {
+      console.log(data);
+      localStorage.setItem('wpIonicToken', JSON.stringify(data));
+      if (localStorage.getItem('wpIonicToken')) {
+        this.navCtrl.push(HomePage);
+      }
+
+    });
   }
 }
