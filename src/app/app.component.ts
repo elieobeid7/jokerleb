@@ -2,8 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { HomePage } from '../pages/home/home';
-import { AuthProvider } from '../providers/auth/auth';
+import { MessageServiceProvider } from '../providers/message-service/message-service';
 
 
 
@@ -14,20 +13,22 @@ import { AuthProvider } from '../providers/auth/auth';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = "HomePage";
   token: boolean = false;
 
   pages: Array<any>;
 
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private authProvider: AuthProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private messageServiceProvider: MessageServiceProvider) {
+    this.messageServiceProvider.myAppEvent$.subscribe(ev => {
+      if (ev.type == 'tokenChanged') {
+        this.token = ev.data;
+        console.log(this.token + "this is true");
+
+      }
+    });
     this.initializeApp();
-    if (localStorage.getItem('wpIonicToken')) {
-      this.token = true;
-    }
-    else {
-      this.token = false;
-    }
+
     this.pages = [
       { title: 'Home', component: 'HomePage', icon: 'md-home' }
       /*     { title: 'Browse ads', component: 'BrowsePage', icon: 'md-search' },
@@ -59,18 +60,11 @@ export class MyApp {
 
   }
   logout() {
-    this.nav.push(HomePage);
-    localStorage.clear();
+    this.messageServiceProvider.broadcast('tokenChanged', { data: false });
+    this.nav.setRoot("HomePage");
+    console.log(this.token + "this is false");
+
   }
 
-  validateLogin() {
-    this.authProvider.validateLogin().subscribe(data => {
-      console.log(data);
-      localStorage.setItem('wpIonicToken', JSON.stringify(data));
-      if (localStorage.getItem('wpIonicToken')) {
-        this.navCtrl.push(HomePage);
-      }
 
-    });
-  }
 }

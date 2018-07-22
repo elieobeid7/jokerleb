@@ -11,6 +11,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
 import { AdsProvider } from '../providers/ads/ads';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageServiceProvider } from '../providers/message-service/message-service';
+
 
 
 
@@ -23,7 +25,7 @@ var config = {
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ var config = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    MyApp
+
   ],
   providers: [
     StatusBar,
@@ -41,7 +44,8 @@ var config = {
     Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
-    AdsProvider
+    AdsProvider,
+    MessageServiceProvider
   ]
 })
 export class AppModule { }

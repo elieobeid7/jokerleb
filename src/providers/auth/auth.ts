@@ -11,6 +11,7 @@ import { ENV } from '../../environments/environment';
 export class AuthProvider {
   api_url = ENV.site_url + ENV.jwt_url;
 
+
   constructor(public http: HttpClient) {
     console.log('Hello AuthProvider Provider');
   }
@@ -25,5 +26,13 @@ export class AuthProvider {
     headers.set('Content-Type', 'application/json');
     return this.http.post(this.api_url, data, { headers: headers });
   }
+  validateLogin() {
+
+
+    let headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json');
+    return this.http.post(this.api_url, { headers: headers });
+  }
+
 
 }

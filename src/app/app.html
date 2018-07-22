@@ -11,7 +11,7 @@
         <ion-icon name="{{p.icon}}" item-left></ion-icon>
         {{p.title}}
       </ion-item>
-      <div *ngIf="token==true">
+      <div *ngIf="token.data==true">
         <ion-item menuClose no-lines text-uppercase no-padding class="new-post" (click)="goTo('AddPage')">
           <ion-icon name="md-add-circle" color="grayColor" item-left></ion-icon>
           Post An Ad
@@ -20,7 +20,7 @@
     </ion-list>
   </ion-content>
   <ion-footer>
-    <div *ngIf="token==true">
+    <div *ngIf="token.data==true">
       <ion-buttons class="log-out" end>
         <button ion-button text-lowercase icon-right clear menuClose (click)="logout()">
           Logout
@@ -28,7 +28,7 @@
         </button>
       </ion-buttons>
     </div>
-    <div *ngIf="token==false">
+    <div *ngIf="token.data==false">
       <ion-buttons class="log-out" end>
         <button ion-button text-lowercase icon-right clear menuClose (click)="goTo('LoginPage')">
           Login
