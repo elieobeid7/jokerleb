@@ -22,9 +22,11 @@ ___
 ## Missing features
 
 - Facebook login
+- Facebook registration
 - Add Favorites
 - Delete Favorites
 - Categories
+- Sub Categories
 - Post ads
 - Edit ads
 - delete ads
