@@ -39,7 +39,7 @@ export class LoginPage {
       if (localStorage.getItem('wpIonicToken')) {
         this.navCtrl.setRoot("HomePage");
       }
-      this.messageServiceProvider.broadcast('tokenChanged', { data: true }); //<== add this
+      this.messageServiceProvider.broadcast('tokenChanged', true); //<== add this
 
     }, err => {
       this.error_message = "Wrong username or password";

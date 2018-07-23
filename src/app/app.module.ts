@@ -31,11 +31,13 @@ var config = {
     BrowserModule,
     IonicImageViewerModule,
     IonicModule.forRoot(MyApp, config),
-    HttpClientModule
+    HttpClientModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp
+
 
   ],
   providers: [

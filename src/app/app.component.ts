@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MessageServiceProvider } from '../providers/message-service/message-service';
+import { AddPage } from "../pages/add/add";
+
 
 
 
@@ -55,12 +57,14 @@ export class MyApp {
   goTo(page) {
     this.nav.setRoot(page);
   }
+
+
   ionViewDidLoad() {
 
 
   }
   logout() {
-    this.messageServiceProvider.broadcast('tokenChanged', { data: false });
+    this.messageServiceProvider.broadcast('tokenChanged', false);
     this.nav.setRoot("HomePage");
     console.log(this.token + "this is false");
 

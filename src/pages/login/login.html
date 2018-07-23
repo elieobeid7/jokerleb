@@ -12,10 +12,12 @@
         </ion-item>
       </ion-list>
       <button ion-button block strong text-uppercase color="grayColor" (click)="onLogin()">Login</button>
-      <p class="bold" [navPush]="'RegisterPage'">No account yet? Create one</p>
+      <p class="bold" (click)="goTo('HomePage')">Continue as a guest</p>
+      <p class="bold" (click)="goTo('RegisterPage')">No account yet? Create one</p>
+      <p class="bold" (click)="goTo('ResetPasswordPage')">Reset Password</p>
+
       <!--           <p class="bold or">OR</p>
           <button ion-button block text-uppercase class="social-btns" color="light">Sign in with Facebook</button> -->
-      <p class="bold" [navPush]="'HomePage'">Continue as a guest</p>
 
     </div>
   </div>

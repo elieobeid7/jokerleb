@@ -25,11 +25,7 @@ ___
 - Favorite
 - Categories
 - Post an ad
-- Registration
-- Hide Login button when logged out
-- Hide Log out button when logged in
-- Only logged in users should be able to post an ad
-- Add app icon and remove spninner
+- Add app icon 
 - Profile
 - My ads
-- Reset Password
+- Registration, Login, Reset password alers

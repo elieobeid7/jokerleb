@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
+import { MessageServiceProvider } from '../../providers/message-service/message-service';
+
 
 /**
- * Generated class for the RegisterPage page.
+ * Generated class for the LoginPage page.
  *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
  */
 
 @IonicPage()
@@ -15,11 +18,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  username;
+  password;
+  email;
+  error_message: string;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private messageServiceProvider: MessageServiceProvider) {
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+    console.log('ionViewDidLoad LoginPage');
   }
+
+  onRegister() {
+    this.authProvider.register(this.username, this.email, this.password).subscribe(data => {
+      console.log(data);
+      localStorage.setItem('wpIonicToken', JSON.stringify(data));
+      if (localStorage.getItem('wpIonicToken')) {
+        this.navCtrl.setRoot("HomePage");
+      }
+      this.messageServiceProvider.broadcast('tokenChanged', true); //<== add this
+
+    }, err => {
+      this.error_message = "Username or email already exist.";
+      console.log(err);
+    });
+  }
+
 
 }

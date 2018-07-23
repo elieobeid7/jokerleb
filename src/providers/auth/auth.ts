@@ -9,7 +9,9 @@ import { ENV } from '../../environments/environment';
 */
 @Injectable()
 export class AuthProvider {
-  api_url = ENV.site_url + ENV.jwt_url;
+  login_url = ENV.site_url + ENV.login_url;
+  register_url = ENV.site_url + ENV.register_url;
+  reset_password_url = ENV.site_url + ENV.reset_password_url;
 
 
   constructor(public http: HttpClient) {
@@ -24,15 +26,27 @@ export class AuthProvider {
 
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
-    return this.http.post(this.api_url, data, { headers: headers });
+    return this.http.post(this.login_url, data, { headers: headers });
   }
-  validateLogin() {
 
+  register(username, email, password) {
+    let data = {
+      username: username,
+      email: email,
+      password: password
+    };
 
     let headers = new HttpHeaders();
     headers.set('Content-Type', 'application/json');
-    return this.http.post(this.api_url, { headers: headers });
+    return this.http.post(this.register_url, data, { headers: headers });
   }
-
+  reset_password(username) {
+    let data = {
+      username: username
+    };
+    let headers = new HttpHeaders();
+    headers.set('Content-Type', 'application/json');
+    return this.http.post(this.reset_password_url, data, { headers: headers });
+  }
 
 }
