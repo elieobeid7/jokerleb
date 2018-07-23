@@ -26,6 +26,5 @@ ___
 - Categories
 - Post an ad
 - My ads
-- Registration, Login, Reset password alers
 
 - Profile (Not going to do it now)

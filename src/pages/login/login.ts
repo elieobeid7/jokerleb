@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
 
@@ -20,10 +20,8 @@ export class LoginPage {
 
   username;
   password;
-  error_message: string;
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private messageServiceProvider: MessageServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private messageServiceProvider: MessageServiceProvider, public alertCtrl: AlertController) {
 
   }
 
@@ -42,7 +40,12 @@ export class LoginPage {
       this.messageServiceProvider.broadcast('tokenChanged', true); //<== add this
 
     }, err => {
-      this.error_message = "Wrong username or password";
+      let alert = this.alertCtrl.create({
+        title: 'Wrong email, username or password',
+        subTitle: 'Please try again',
+        buttons: ['Ok']
+      });
+      alert.present();
       console.log(err);
     });
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 
 
@@ -18,10 +18,9 @@ import { AuthProvider } from '../../providers/auth/auth';
 export class ResetPasswordPage {
 
   username;
-  error_message: string;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, public alertCtrl: AlertController) {
 
   }
 
@@ -35,7 +34,12 @@ export class ResetPasswordPage {
       localStorage.setItem('wpIonicToken', JSON.stringify(data));
 
     }, err => {
-      this.error_message = "Something Went wrong, please try again.";
+      let alert = this.alertCtrl.create({
+        title: 'Something went wrong, please try again',
+        subTitle: 'The username or email you entered does not exist',
+        buttons: ['Ok']
+      });
+      alert.present();
       console.log(err);
     });
   }
