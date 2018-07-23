@@ -21,14 +21,17 @@ ___
 
 ## Missing features
 
-- Facebook login
-- Facebook registration
-- Add Favorites
-- Delete Favorites
+ 
 - Categories
 - Sub Categories
 - Post ads
 - Edit ads
 - delete ads
+- Facebook Login
+- Facebook Registration
+- Add favorites
+- Delete favorites
+- Share to Whatsapp
+- Share to Facebook
 
 - Profile (Not going to do it now, probably can't be done)
