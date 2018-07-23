@@ -23,12 +23,11 @@ export class MyAdsPage {
   localstorageString;
   @ViewChild(Content) content: Content;
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider) {
-    /*   if (localStorage.getItem('wpIonicToken')) {
-        this.localstorageString = localStorage.getItem('wpIonicToken');
-        this.user = JSON.parse(this.localstorageString);
-  
-        this.loadAds();
-      } */
+    if (localStorage.getItem('wpIonicToken')) {
+      this.localstorageString = localStorage.getItem('wpIonicToken');
+      this.user = JSON.parse(this.localstorageString);
+    }
+    this.loadAds();
   }
   loadAds(infiniteScroll?) {
     this.adsProvider.getMyAds(this.page, this.user.user_email).subscribe((data: any) => {
