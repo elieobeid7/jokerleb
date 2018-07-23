@@ -11,7 +11,6 @@ import { AdsProvider } from '../../providers/ads/ads';
 
 export class MyAdsPage {
 
-
   items = [];
   page = 1;
   showSearch: any;

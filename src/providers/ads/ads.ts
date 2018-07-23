@@ -36,8 +36,9 @@ export class AdsProvider {
     return this.http.get(this.api_url + page)
       .flatMap((ads: any[]) => {
         if (ads.length > 0) {
+          console.log(ads);
           return Observable.forkJoin(
-            ads.filter((ad: any) => ad.email == email).map((ad) => {
+            ads.filter((ad: any) => ad.email.trim().toLowerCase() == email.trim().toLowerCase()).map((ad) => {
               return this.http.get(this.ads_thumb_url + ad.id)
                 .map((res: any) => {
                   let media: any = res;

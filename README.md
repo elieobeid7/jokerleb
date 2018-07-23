@@ -25,6 +25,5 @@ ___
 - Favorite
 - Categories
 - Post an ad
-- My ads
 
-- Profile (Not going to do it now)
+- Profile (Not going to do it now, probably can't be done)
