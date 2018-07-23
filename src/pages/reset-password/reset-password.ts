@@ -15,7 +15,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   selector: 'page-reset-password',
   templateUrl: 'reset-password.html',
 })
-export class resetPasswordPage {
+export class ResetPasswordPage {
 
   username;
   error_message: string;

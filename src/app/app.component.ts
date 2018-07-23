@@ -3,11 +3,6 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MessageServiceProvider } from '../providers/message-service/message-service';
-import { AddPage } from "../pages/add/add";
-
-
-
-
 
 @Component({
   templateUrl: 'app.html'
