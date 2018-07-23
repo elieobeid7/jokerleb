@@ -22,8 +22,11 @@ ___
 ## Missing features
 
 - Facebook login
-- Favorite
+- Add Favorites
+- Delete Favorites
 - Categories
-- Post an ad
+- Post ads
+- Edit ads
+- delete ads
 
 - Profile (Not going to do it now, probably can't be done)

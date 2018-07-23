@@ -67,7 +67,7 @@ export class MyApp {
   }
   logout() {
     this.messageServiceProvider.broadcast('tokenChanged', false);
-    localStorage.clear();
+    localStorage.removeItem('wpIonicToken')
     this.nav.setRoot("HomePage");
 
   }
