@@ -32,6 +32,28 @@ export class AdsProvider {
       });
   }
 
+  getMyAds(page, email): Observable<any[]> {
+    return this.http.get(this.api_url + page)
+      .flatMap((ads: any[]) => {
+        if (ads.length > 0) {
+          return Observable.forkJoin(
+            ads.map((ad: any) => {
+              if (ad.email == email && email != undefined) {
+                return this.http.get(this.ads_thumb_url + ad.id)
+                  .map((res: any) => {
+                    let media: any = res;
+                    ad.media = media;
+                    return ad;
+                  });
+              }
+            })
+          );
+        }
+        return Observable.of([]);
+      });
+  }
+
+
   searchAds(term, page): Observable<any[]> {
     return this.http.get(ENV.site_url + ENV.ads_search_url + term + "&&per_page=20&&page=" + page)
       .flatMap((ads: any[]) => {

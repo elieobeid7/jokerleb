@@ -25,12 +25,10 @@ export class ResetPasswordPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   onResetPassword() {
     this.authProvider.reset_password(this.username).subscribe(data => {
-      console.log(data);
       localStorage.setItem('wpIonicToken', JSON.stringify(data));
 
     }, err => {

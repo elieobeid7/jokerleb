@@ -14,7 +14,6 @@ export class HomePage {
 
   items = [];
   page = 1;
-  category: Array<any>;
   showSearch: any;
   tab = 1;
   tabsPosition: any;
@@ -24,14 +23,12 @@ export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider) {
 
 
-    this.category = [{ img: 'assets/img/img1.png' }, { img: 'assets/img/img2.png' }, { img: 'assets/img/img3.png' }, { img: 'assets/img/img4.png' }, { img: 'assets/img/img1.png' }, { img: 'assets/img/img2.png' }, { img: 'assets/img/img3.png' }, { img: 'assets/img/img4.png' }];
     this.loadAds();
   }
 
   loadAds(infiniteScroll?) {
     this.adsProvider.getAds(this.page).subscribe((data: any) => {
       this.items = this.items.concat(data);
-      console.log(this.items);
       if (infiniteScroll) {
         infiniteScroll.complete();
       }

@@ -12,6 +12,9 @@ export class MyApp {
 
   rootPage: any = "HomePage";
   token: boolean = false;
+  user;
+  localstorageString;
+
 
   pages: Array<any>;
 
@@ -20,7 +23,6 @@ export class MyApp {
     this.messageServiceProvider.myAppEvent$.subscribe(ev => {
       if (ev.type == 'tokenChanged') {
         this.token = ev.data;
-        console.log(this.token + "this is true");
 
       }
     });
@@ -32,6 +34,11 @@ export class MyApp {
              { title: 'Profile', component: 'ProfilePage', icon: 'md-person' },
              { title: 'my ads', component: 'MyAdsPage', icon: 'md-paper' }  */
     ];
+
+    if (localStorage.getItem('wpIonicToken')) {
+      this.localstorageString = localStorage.getItem('wpIonicToken');
+      this.user = JSON.parse(this.localstorageString);
+    }
   }
 
   initializeApp() {
@@ -60,8 +67,8 @@ export class MyApp {
   }
   logout() {
     this.messageServiceProvider.broadcast('tokenChanged', false);
+    localStorage.clear();
     this.nav.setRoot("HomePage");
-    console.log(this.token + "this is false");
 
   }
 

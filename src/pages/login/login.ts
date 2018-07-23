@@ -26,13 +26,10 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   onLogin() {
-    console.log(this.username, this.password);
     this.authProvider.postLogin(this.username, this.password).subscribe(data => {
-      console.log(data);
       localStorage.setItem('wpIonicToken', JSON.stringify(data));
       if (localStorage.getItem('wpIonicToken')) {
         this.navCtrl.setRoot("HomePage");

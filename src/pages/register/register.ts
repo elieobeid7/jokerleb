@@ -28,12 +28,10 @@ export class RegisterPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   onRegister() {
     this.authProvider.register(this.username, this.email, this.password).subscribe(data => {
-      console.log(data);
       localStorage.setItem('wpIonicToken', JSON.stringify(data));
       if (localStorage.getItem('wpIonicToken')) {
         this.navCtrl.setRoot("HomePage");
