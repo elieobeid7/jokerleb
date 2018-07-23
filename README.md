@@ -26,7 +26,7 @@ ___
 - Sub Categories
 - Post ads
 - Edit ads
-- delete ads
+- Delete ads
 - Facebook Login
 - Facebook Registration
 - Add favorites
