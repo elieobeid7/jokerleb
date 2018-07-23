@@ -25,7 +25,7 @@ ___
 - Favorite
 - Categories
 - Post an ad
-- Add app icon 
-- Profile
 - My ads
 - Registration, Login, Reset password alers
+
+- Profile (Not going to do it now)

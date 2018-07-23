@@ -33,7 +33,8 @@ export class AuthProvider {
     let data = {
       username: username,
       email: email,
-      password: password
+      password: password,
+      role: "contributor"
     };
 
     let headers = new HttpHeaders();
