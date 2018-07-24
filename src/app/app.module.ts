@@ -12,6 +12,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { AdsProvider } from '../providers/ads/ads';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageServiceProvider } from '../providers/message-service/message-service';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 
@@ -47,7 +48,8 @@ var config = {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     AdsProvider,
-    MessageServiceProvider
+    MessageServiceProvider,
+    SocialSharing
   ]
 })
 export class AppModule { }

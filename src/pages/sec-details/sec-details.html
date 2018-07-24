@@ -5,12 +5,9 @@
     </button>
     <ion-title text-capitalize>{{item?.title.rendered}}</ion-title>
     <ion-buttons class="head-btns" end>
-      <button (click)="presentshareModal()" ion-button icon-only>
-        <ion-icon name="md-share"></ion-icon>
-      </button>
-      <button (click)="Like()" ion-button icon-only>
+      <!--      <button (click)="Like()" ion-button icon-only>
         <ion-icon name="md-heart" [ngClass]="{'activeColor':active}"></ion-icon>
-      </button>
+      </button> -->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -40,7 +37,18 @@
     <p innerHtml="{{item.content.rendered}}"> </p>
   </div>
 </ion-content>
-
+<ion-row>
+  <ion-col>
+    <button ion-fab color="secondary" (click)="shareWhatsapp(item)">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+    </button>
+  </ion-col>
+  <ion-col>
+    <button ion-fab (click)="shareFacebook(item)">
+      <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+  </ion-col>
+</ion-row>
 <ion-footer class="detFooter">
   <ion-grid no-padding>
     <ion-row text-center>
