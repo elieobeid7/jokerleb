@@ -39,23 +39,23 @@ export class SecDetailsPage {
   }
 
   shareWhatsapp(whatsappMsg) {
-    this.socialSharing.shareViaWhatsApp(whatsappMsg.title, whatsappMsg.media_details.sizes.medium.source_url, whatsappMsg.link).then(() => {
-      console.log("Message sent!");
-      // Success!
-    }).catch((error) => {
-      console.log(error);
-
-
-    });
+    this.socialSharing.shareViaWhatsApp(whatsappMsg.title, whatsappMsg.media[whatsappMsg.media.length - 1].media_details.sizes.medium.source_url, whatsappMsg.link)
+      .then(() => {
+        console.log("Message sent!");
+        // Success!
+      }).catch((error) => {
+        console.log(error);
+      });
   }
 
   shareFacebook(fbMsg) {
-    this.socialSharing.shareViaWhatsApp(fbMsg.title, fbMsg.media_details.sizes.medium.source_url, fbMsg.link).then(() => {
-      console.log("Message sent!");
-      // Success!
-    }).catch((error) => {
-      console.log(error);
-    });
+    this.socialSharing.shareViaWhatsApp(fbMsg.title, fbMsg.media[fbMsg.media.length - 1].media_details.sizes.medium.source_url, fbMsg.link)
+      .then(() => {
+        console.log("Message sent!");
+        // Success!
+      }).catch((error) => {
+        console.log(error);
+      });
   }
 }
 
