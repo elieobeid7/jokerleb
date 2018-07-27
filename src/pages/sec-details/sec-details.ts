@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ImageViewerController } from 'ionic-img-viewer';
-import { SocialSharing } from '@ionic-native/social-sharing';
+import { CommonProvider } from '../../providers/common/comnon';
+
+
 
 
 @IonicPage()
@@ -14,16 +16,11 @@ export class SecDetailsPage {
   show = false;
   item;
   _imageViewerCtrl: ImageViewerController;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, imageViewerCtrl: ImageViewerController, private socialSharing: SocialSharing) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, imageViewerCtrl: ImageViewerController, private commonProvider: CommonProvider) {
     this._imageViewerCtrl = imageViewerCtrl;
     this.item = this.navParams.get('item');
+  }
 
-  }
-  // for share modal
-  presentshareModal() {
-    let shareModal = this.modalCtrl.create('ShareModal', { userId: 8675309 });
-    shareModal.present();
-  }
   // active like
   Like() {
     this.active = !this.active;
@@ -39,23 +36,18 @@ export class SecDetailsPage {
   }
 
   shareWhatsapp(whatsappMsg) {
-    this.socialSharing.shareViaWhatsApp(whatsappMsg.title, whatsappMsg.media[whatsappMsg.media.length - 1].media_details.sizes.medium.source_url, whatsappMsg.link)
-      .then(() => {
-        console.log("Message sent!");
-        // Success!
-      }).catch((error) => {
-        console.log(error);
-      });
+    this.commonProvider.shareWhatsapp(whatsappMsg);
   }
 
   shareFacebook(fbMsg) {
-    this.socialSharing.shareViaWhatsApp(fbMsg.title, fbMsg.media[fbMsg.media.length - 1].media_details.sizes.medium.source_url, fbMsg.link)
-      .then(() => {
-        console.log("Message sent!");
-        // Success!
-      }).catch((error) => {
-        console.log(error);
-      });
+    this.commonProvider.shareWhatsapp(fbMsg);
+  }
+
+  share(msg) {
+    this.commonProvider.share(msg);
   }
 }
+
+
+
 

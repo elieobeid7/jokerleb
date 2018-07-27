@@ -23,15 +23,6 @@ ___
 
  
 - Categories
-- Sub Categories
 - Post ads
-- Edit ads
-- Delete ads
-- Facebook Login
-- Facebook Registration
-- Add favorites
-- Delete favorites
-- Share to Whatsapp
-- Share to Facebook
+- favorites
 
-- Profile (Not going to do it now, probably can't be done)

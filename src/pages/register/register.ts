@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
+import { CommonProvider } from '../../providers/common/comnon';
+
 
 
 /**
@@ -23,7 +25,7 @@ export class RegisterPage {
   email;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private messageServiceProvider: MessageServiceProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private messageServiceProvider: MessageServiceProvider, public alertCtrl: AlertController, private commonProvider: CommonProvider) {
 
   }
 
@@ -32,8 +34,8 @@ export class RegisterPage {
 
   onRegister() {
     this.authProvider.register(this.username, this.email, this.password).subscribe(data => {
-      localStorage.setItem('wpIonicToken', JSON.stringify(data));
-      if (localStorage.getItem('wpIonicToken')) {
+      localStorage.setItem('loginToken', JSON.stringify(data));
+      if (localStorage.getItem('loginToken')) {
         this.navCtrl.setRoot("HomePage");
       }
       this.messageServiceProvider.broadcast('tokenChanged', true); //<== add this
@@ -49,5 +51,7 @@ export class RegisterPage {
     });
   }
 
-
+  loginWithFb() {
+    this.commonProvider.loginFB();
+  }
 }

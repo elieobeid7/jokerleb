@@ -1,23 +1,28 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar color="primary">
-
-      <div *ngIf="user; then thenTemplateName else elseTemplateName">
+      <div *ngIf="user; then loggedIn else loggedOut">
       </div>
-
-      <ng-template #thenTemplateName>
-        <ion-title color="light">Welcome {{user.user_display_name}} </ion-title>
+      <ng-template #loggedIn>
+        <span *ngIf="user.fb !=true">
+          <ion-title color="light">Welcome {{user.user_display_name}} </ion-title>
+        </span>
+        <div *ngIf="user.fb==true">
+          <ion-item>
+            <ion-title color="light">Welcome {{user.usernam}} </ion-title>
+          </ion-item>
+          <ion-item>
+            <ion-avatar class="avatar">
+              <img [src]="user.picture" />
+            </ion-avatar>
+          </ion-item>
+        </div>
       </ng-template>
-
       <ng-template #elseTemplateName>
         <ion-title color="light">Welcome To JokerLeb</ion-title>
       </ng-template>
-
-
-
     </ion-toolbar>
   </ion-header>
-
   <ion-content>
     <ion-list>
       <ion-item menuClose no-lines text-uppercase no-padding *ngFor="let p of pages" (click)="openPage(p)">

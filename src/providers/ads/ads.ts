@@ -70,7 +70,6 @@ export class AdsProvider {
         return Observable.of([]);
       });
   }
-
   postAds(content, author) {
     let data = {
       title: content,
@@ -83,15 +82,11 @@ export class AdsProvider {
       writer: author,
       status: 'publish'
     };
-
-    let token = JSON.parse(localStorage.getItem('wpIonicToken')).token;
-
-
+    let token = JSON.parse(localStorage.getItem('loginToken')).token;
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
     return this.http.post(this.api_url, data, { headers: headers });
   }
-
 }

@@ -3,6 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MessageServiceProvider } from '../providers/message-service/message-service';
+import { CommonProvider } from '../providers/common/comnon';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -15,11 +17,10 @@ export class MyApp {
   user;
   localstorageString;
 
-
   pages: Array<any>;
 
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private messageServiceProvider: MessageServiceProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private messageServiceProvider: MessageServiceProvider, private commonProvider: CommonProvider) {
     this.messageServiceProvider.myAppEvent$.subscribe(ev => {
       if (ev.type == 'tokenChanged') {
         this.token = ev.data;
@@ -35,12 +36,11 @@ export class MyApp {
              { title: 'my ads', component: 'MyAdsPage', icon: 'md-paper' }  */
     ];
 
-    if (localStorage.getItem('wpIonicToken')) {
-      this.localstorageString = localStorage.getItem('wpIonicToken');
+    if (localStorage.getItem('loginToken')) {
+      this.localstorageString = localStorage.getItem('loginToken');
       this.user = JSON.parse(this.localstorageString);
     }
   }
-
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -60,15 +60,11 @@ export class MyApp {
     this.nav.setRoot(page);
   }
 
-
-  ionViewDidLoad() {
-
+  logout() {
+    this.commonProvider.logout();
 
   }
-  logout() {
-    this.messageServiceProvider.broadcast('tokenChanged', false);
-    localStorage.removeItem('wpIonicToken')
-    this.nav.setRoot("HomePage");
+  ionViewDidLoad() {
 
   }
 

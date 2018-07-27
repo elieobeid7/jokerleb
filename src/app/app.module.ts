@@ -13,6 +13,9 @@ import { AdsProvider } from '../providers/ads/ads';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageServiceProvider } from '../providers/message-service/message-service';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Facebook } from '@ionic-native/facebook';
+import { CommonProvider } from '../providers/common/comnon';
+
 
 
 
@@ -49,7 +52,9 @@ var config = {
     AuthProvider,
     AdsProvider,
     MessageServiceProvider,
-    SocialSharing
+    SocialSharing,
+    Facebook,
+    CommonProvider
   ]
 })
 export class AppModule { }

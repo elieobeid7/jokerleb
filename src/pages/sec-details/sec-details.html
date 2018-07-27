@@ -5,9 +5,12 @@
     </button>
     <ion-title text-capitalize>{{item?.title.rendered}}</ion-title>
     <ion-buttons class="head-btns" end>
-      <!--      <button (click)="Like()" ion-button icon-only>
+      <button (click)="share(item)" ion-button icon-only>
+        <ion-icon name="md-share"></ion-icon>
+      </button>
+      <button (click)="Like()" ion-button icon-only>
         <ion-icon name="md-heart" [ngClass]="{'activeColor':active}"></ion-icon>
-      </button> -->
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>

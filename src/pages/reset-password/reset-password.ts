@@ -29,7 +29,7 @@ export class ResetPasswordPage {
 
   onResetPassword() {
     this.authProvider.reset_password(this.username).subscribe(data => {
-      localStorage.setItem('wpIonicToken', JSON.stringify(data));
+      localStorage.setItem('loginToken', JSON.stringify(data));
 
     }, err => {
       let alert = this.alertCtrl.create({

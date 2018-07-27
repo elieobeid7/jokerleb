@@ -22,8 +22,8 @@ export class MyAdsPage {
   localstorageString;
   @ViewChild(Content) content: Content;
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider) {
-    if (localStorage.getItem('wpIonicToken')) {
-      this.localstorageString = localStorage.getItem('wpIonicToken');
+    if (localStorage.getItem('loginToken')) {
+      this.localstorageString = localStorage.getItem('loginToken');
       this.user = JSON.parse(this.localstorageString);
     }
     this.loadAds();
