@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MessageServiceProvider } from '../providers/message-service/message-service';
 import { CommonProvider } from '../providers/common/comnon';
+import { Storage } from '@ionic/Storage';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class MyApp {
   pages: Array<any>;
 
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private messageServiceProvider: MessageServiceProvider, private commonProvider: CommonProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private messageServiceProvider: MessageServiceProvider, private commonProvider: CommonProvider, public storage: Storage) {
     this.messageServiceProvider.myAppEvent$.subscribe(ev => {
       if (ev.type == 'tokenChanged') {
         this.token = ev.data;
@@ -31,15 +32,13 @@ export class MyApp {
 
     this.pages = [
       { title: 'Home', component: 'HomePage', icon: 'md-home' }
-      /*     { title: 'Browse ads', component: 'BrowsePage', icon: 'md-search' },
-             { title: 'Profile', component: 'ProfilePage', icon: 'md-person' },
-             { title: 'my ads', component: 'MyAdsPage', icon: 'md-paper' }  */
+
     ];
 
-    if (localStorage.getItem('loginToken')) {
-      this.localstorageString = localStorage.getItem('loginToken');
-      this.user = JSON.parse(this.localstorageString);
-    }
+
+    this.storage.get('loginToken').then((val) => {
+      this.user = val;
+    });
   }
   initializeApp() {
     this.platform.ready().then(() => {

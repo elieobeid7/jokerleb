@@ -15,6 +15,8 @@ import { MessageServiceProvider } from '../providers/message-service/message-ser
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Facebook } from '@ionic-native/facebook';
 import { CommonProvider } from '../providers/common/comnon';
+import { IonicStorageModule } from '@ionic/Storage';
+
 
 
 
@@ -36,7 +38,7 @@ var config = {
     IonicImageViewerModule,
     IonicModule.forRoot(MyApp, config),
     HttpClientModule,
-
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

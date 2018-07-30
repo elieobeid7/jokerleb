@@ -89,4 +89,5 @@
         <variable name="APP_NAME" value="jokerleb" />
         <variable name="ANDROID_SDK_VERSION" value="4.+" />
     </plugin>
+    <plugin name="cordova-sqlite-storage" spec="~2.3.3" />
 </widget>

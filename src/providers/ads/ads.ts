@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ENV } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { Storage } from '@ionic/Storage';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
@@ -9,8 +9,10 @@ import 'rxjs/add/operator/map';
 export class AdsProvider {
   api_url = ENV.site_url + ENV.ads_url;
   ads_thumb_url = ENV.site_url + ENV.ads_thumb_url;
+  token: any;
 
-  constructor(public http: HttpClient) {
+
+  constructor(public http: HttpClient, public storage: Storage) {
 
   }
   getAds(page): Observable<any[]> {
@@ -82,10 +84,13 @@ export class AdsProvider {
       writer: author,
       status: 'publish'
     };
-    let token = JSON.parse(localStorage.getItem('loginToken')).token;
+    this.storage.get('loginToken').then((val) => {
+      this.token = val.token;
+    });
+
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${this.token}`
     });
     return this.http.post(this.api_url, data, { headers: headers });
   }

@@ -1,45 +1,27 @@
 import { Component, Renderer, ViewChild, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
-import { AdsProvider } from '../../providers/ads/ads';
-
+import { Storage } from '@ionic/Storage';
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-favorites',
+  templateUrl: 'favorites.html',
 })
 
-export class HomePage {
+export class FavoritesPage {
 
 
   items = [];
-  page = 1;
   showSearch: any;
   tab = 1;
   tabsPosition: any;
   searchQuery;
   darkHeader: any;
   @ViewChild(Content) content: Content;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider) {
-
-
-    this.loadAds();
-  }
-
-  loadAds(infiniteScroll?) {
-    this.adsProvider.getAds(this.page).subscribe((data: any) => {
-      this.items = this.items.concat(data);
-      if (infiniteScroll) {
-        infiniteScroll.complete();
-      }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public storage: Storage) {
+    this.storage.get("favorites").then((val) => {
+      this.items = JSON.parse(val);
     });
-  }
-
-
-  loadMore(infiniteScroll) {
-    this.page++;
-    this.loadAds(infiniteScroll);
-
   }
   onShowItemDetail(item) {
     this.navCtrl.push('SecDetailsPage', { item: item });
@@ -72,5 +54,12 @@ export class HomePage {
   ngAfterViewInit() {
     var length = document.getElementsByClassName("tabs").length - 1;
     this.tabsPosition = document.getElementsByClassName("tabs")[length];
+  }
+  removefavorites(item) {
+    this.storage.get("favorites").then((val) => {
+      this.items = JSON.parse(val);
+      this.items.splice(item, 1);
+      this.storage.set('favorites', JSON.stringify(this.items));
+    });
   }
 }

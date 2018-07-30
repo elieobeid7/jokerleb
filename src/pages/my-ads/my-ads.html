@@ -12,45 +12,12 @@
   </ion-navbar>
   <ion-toolbar color="primary" class="search-toolbar" *ngIf="showSearch">
 
-
-
     <ion-searchbar [(ngModel)]="searchQuery" color="primary" animated="true" (keyup.enter)="onSearch()" autocorrect="off"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-<ion-content fullscreen (ionScroll)="scrollingFun($event)" class="home-content" [ngSwitch]="tab">
-  <h4>Categories</h4>
-  <ion-grid class="tabs" no-padding>
-    <ion-row>
-      <ion-col (click)="activeTab(1)" [ngClass]="{'activeText': tab==1}" col-2>
-        ALL </ion-col>
-      <ion-col col-10>
-        <ion-row>
-          <ion-col (click)="activeTab(2)" [ngClass]="{'activeText': tab==2}" col-3>
-            <img src="assets/img/icon1.png" />
-            <h4>Jobs</h4>
-          </ion-col>
-          <ion-col (click)="activeTab(3)" [ngClass]="{'activeText': tab==3}" col-3>
-            <img src="assets/img/icon2.png" />
-            <h4>Mobile</h4>
-          </ion-col>
-          <ion-col (click)="activeTab(4)" [ngClass]="{'activeText': tab==4}" col-3>
-            <img src="assets/img/icon3.png" />
-            <h4>Pets</h4>
-          </ion-col>
-          <ion-col (click)="activeTab(5)" [ngClass]="{'activeText': tab==5}" col-3>
-            <img src="assets/img/icon4.png" />
-            <h4>Fashion</h4>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
+<ion-content fullscreen class="home-content" [ngSwitch]="tab">
   <div *ngIf="items?.length>0; then thenTemplateName else elseTemplateName">
   </div>
-
-
-
   <ng-template #thenTemplateName>
     <div class="all-lists">
       <div class="all-category" *ngSwitchCase="1">
@@ -58,7 +25,6 @@
           <span *ngIf="item.media.length">
             <img src="{{item.media[item.media.length-1].media_details.sizes.medium.source_url}}" />
           </span>
-          <ion-icon name="md-heart" class="like-icon" color="light"></ion-icon>
           <div class="card-title" text-uppercase>
             <h4 color="secondary">{{item?.title.rendered}}</h4>
             <p color="dark">{{item?.price}}</p>

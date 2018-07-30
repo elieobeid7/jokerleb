@@ -3,7 +3,7 @@
     <button ion-button menuToggle start>
       <ion-icon name="md-menu"></ion-icon>
     </button>
-    <ion-title text-capitalize>Search</ion-title>
+    <ion-title text-capitalize>Favorites</ion-title>
     <ion-buttons class="head-btns" end>
       <button (click)="toggleSearch()" ion-button icon-only>
         <ion-icon name="search"></ion-icon>
@@ -36,9 +36,6 @@
       </div>
     </div>
 
-    <ion-infinite-scroll (ionInfinite)="loadMore($event)" loadingSpinner="bubbles">
-      <ion-infinite-scroll-content></ion-infinite-scroll-content>
-    </ion-infinite-scroll>
 
   </ng-template>
 
@@ -47,10 +44,10 @@
       <div class="all-category" *ngSwitchCase="1">
         <ion-card text-center>
           <ion-card-header>
-            No results found
+            No favorites found
           </ion-card-header>
           <ion-card-content>
-            No results found, please try again.
+            You don't have any favorite items yet.
           </ion-card-content>
         </ion-card>
       </div>

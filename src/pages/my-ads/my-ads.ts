@@ -1,6 +1,8 @@
 import { Component, Renderer, ViewChild, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { AdsProvider } from '../../providers/ads/ads';
+import { Storage } from '@ionic/Storage';
+
 
 
 @IonicPage()
@@ -21,11 +23,17 @@ export class MyAdsPage {
   user;
   localstorageString;
   @ViewChild(Content) content: Content;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider) {
-    if (localStorage.getItem('loginToken')) {
-      this.localstorageString = localStorage.getItem('loginToken');
-      this.user = JSON.parse(this.localstorageString);
-    }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider, public storage: Storage) {
+
+    storage.get("loginToken").then((val) => {
+      if (val) {
+        this.user = val;
+      }
+      else {
+        this.navCtrl.setRoot("HomePage");
+      }
+    });
+
     this.loadAds();
   }
   loadAds(infiniteScroll?) {
@@ -36,8 +44,6 @@ export class MyAdsPage {
       }
     });
   }
-
-
   loadMore(infiniteScroll) {
     this.page++;
     this.loadAds(infiniteScroll);
@@ -74,17 +80,4 @@ export class MyAdsPage {
     var length = document.getElementsByClassName("tabs").length - 1;
     this.tabsPosition = document.getElementsByClassName("tabs")[length];
   }
-  scrollingFun(ev) {
-    ev.domWrite(() => {
-      this.updateHeader(ev);
-    });
-  }
-
-  updateHeader(ev) {
-    if (ev.scrollTop > 0) {
-      this.darkHeader = ev.scrollTop / 200;
-      this.renderer.setElementClass(this.tabsPosition, 'sub-header', true);
-    } else this.renderer.setElementClass(this.tabsPosition, 'sub-header', false);
-  }
-
 }

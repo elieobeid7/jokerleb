@@ -72,17 +72,4 @@ export class SearchDetailsPage {
     var length = document.getElementsByClassName("tabs").length - 1;
     this.tabsPosition = document.getElementsByClassName("tabs")[length];
   }
-  scrollingFun(ev) {
-    ev.domWrite(() => {
-      this.updateHeader(ev);
-    });
-  }
-
-  updateHeader(ev) {
-    if (ev.scrollTop > 0) {
-      this.darkHeader = ev.scrollTop / 200;
-      this.renderer.setElementClass(this.tabsPosition, 'sub-header', true);
-    } else this.renderer.setElementClass(this.tabsPosition, 'sub-header', false);
-  }
-
 }

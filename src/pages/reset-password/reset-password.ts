@@ -29,7 +29,12 @@ export class ResetPasswordPage {
 
   onResetPassword() {
     this.authProvider.reset_password(this.username).subscribe(data => {
-      localStorage.setItem('loginToken', JSON.stringify(data));
+      let alert = this.alertCtrl.create({
+        title: 'Please check your email',
+        subTitle: 'Please check your email to reset your password',
+        buttons: ['Ok']
+      });
+      alert.present();
 
     }, err => {
       let alert = this.alertCtrl.create({

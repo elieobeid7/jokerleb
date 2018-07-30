@@ -9,7 +9,7 @@
         </span>
         <div *ngIf="user.fb==true">
           <ion-item>
-            <ion-title color="light">Welcome {{user.usernam}} </ion-title>
+            <ion-title color="light">Welcome {{user.username}} </ion-title>
           </ion-item>
           <ion-item>
             <ion-avatar class="avatar">
@@ -39,6 +39,10 @@
           My Ads
         </ion-item>
       </div>
+      <ion-item menuClose no-lines text-uppercase no-padding class="new-post" (click)="goTo('FavoritesPage')">
+        <ion-icon name="md-heart" color="grayColor" item-left></ion-icon>
+        My Favorites
+      </ion-item>
     </ion-list>
   </ion-content>
   <ion-footer>

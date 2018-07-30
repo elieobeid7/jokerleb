@@ -6,4 +6,5 @@ export const ENV = {
     ads_search_url: 'wp/v2/ads?search=',
     reset_password_url: 'wp/v2/users/lostpassword',
     register_url: 'wp/v2/users/register',
+    fb_login_url: 'wp/v2/m_facebook/login'
 };

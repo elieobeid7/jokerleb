@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { MessageServiceProvider } from '../message-service/message-service';
-import { NavController } from 'ionic-angular';
 import { Nav } from 'ionic-angular';
 import { ViewChild } from '@angular/core';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { Storage } from '@ionic/Storage';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+
+
+
 
 
 
@@ -24,25 +27,42 @@ export class CommonProvider {
 
   user: any;
 
-  constructor(private facebook: Facebook, private messageServiceProvider: MessageServiceProvider, public navCtrl: NavController, private socialSharing: SocialSharing) {
+
+  constructor(private messageServiceProvider: MessageServiceProvider, private socialSharing: SocialSharing, public storage: Storage, private facebook: Facebook) {
   }
   loginFB() {
-    this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
-      this.messageServiceProvider.broadcast('tokenChanged', true); //<== add this
-      this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
-        this.user = { email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name'], fb: true }
-        localStorage.setItem('loginToken', JSON.stringify(this.user));
-        this.navCtrl.setRoot("HomePage");
-
-      });
+    this.facebook.login(['email', 'public_profile']).then((res: FacebookLoginResponse) => {
+      if (res.status == "connected") {
+        this.messageServiceProvider.broadcast('tokenChanged', true); //<== add this
+        this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+          this.user = {
+            email: profile['email'],
+            first_name: profile['first_name'],
+            picture: profile['picture_large']['data']['url'],
+            username: profile['name'],
+            fb: true,
+            token: res.authResponse.accessToken,
+            fb_id: res.authResponse.userID
+          }
+          this.storage.set('loginToken', this.user);
+          this.nav.setRoot("HomePage");
+        });
+      } else {
+        console.log("An error occurred...");
+      }
+    }).catch((error) => {
+      console.log('Error logging into Facebook', error);
     });
   }
-
   logout() {
     this.messageServiceProvider.broadcast('tokenChanged', false);
-    localStorage.removeItem('loginToken');
+    this.storage.remove('loginToken');
+    this.facebook.getLoginStatus().then(res => {
+      if (res.status === "connected") {
+        this.facebook.logout();
+      }
+    })
     this.nav.setRoot("HomePage");
-
   }
   shareWhatsapp(whatsappMsg) {
     this.socialSharing.shareViaWhatsApp(whatsappMsg.title, whatsappMsg.media[whatsappMsg.media.length - 1].media_details.sizes.medium.source_url, whatsappMsg.link)
@@ -53,7 +73,6 @@ export class CommonProvider {
         console.log(error);
       });
   }
-
   shareFacebook(fbMsg) {
     this.socialSharing.shareViaWhatsApp(fbMsg.title, fbMsg.media[fbMsg.media.length - 1].media_details.sizes.medium.source_url, fbMsg.link)
       .then(() => {
@@ -72,7 +91,26 @@ export class CommonProvider {
         console.log(error);
       });
   }
+  favorites(item) {
+    let items = [];
 
+    this.storage.get("favorites").then((val) => {
+      items = JSON.parse(val);
+      if (items != null && items.length > 0) {
+        if (items.indexOf(item) !== -1) {
+          items.splice(item, 1);
+        }
+        else {
+          items.push(item);
+        }
+      }
+      else {
+        let items = [];
+        items.push(item);
+      }
+      this.storage.set('favorites', JSON.stringify(items));
+    });
+  }
 }
 
 

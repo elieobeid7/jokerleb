@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AuthProvider } from '../../providers/auth/auth';
 import { MessageServiceProvider } from '../../providers/message-service/message-service';
 import { CommonProvider } from '../../providers/common/comnon';
+import { Storage } from '@ionic/Storage';
+
 
 
 
@@ -25,7 +27,7 @@ export class RegisterPage {
   email;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private messageServiceProvider: MessageServiceProvider, public alertCtrl: AlertController, private commonProvider: CommonProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private authProvider: AuthProvider, private messageServiceProvider: MessageServiceProvider, public alertCtrl: AlertController, private commonProvider: CommonProvider, public storage: Storage) {
 
   }
 
@@ -34,10 +36,8 @@ export class RegisterPage {
 
   onRegister() {
     this.authProvider.register(this.username, this.email, this.password).subscribe(data => {
-      localStorage.setItem('loginToken', JSON.stringify(data));
-      if (localStorage.getItem('loginToken')) {
-        this.navCtrl.setRoot("HomePage");
-      }
+      this.storage.set('loginToken', data);
+      this.navCtrl.setRoot("HomePage");
       this.messageServiceProvider.broadcast('tokenChanged', true); //<== add this
 
     }, err => {
