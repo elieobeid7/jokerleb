@@ -10,6 +10,7 @@ export class AdsProvider {
   api_url = ENV.site_url + ENV.ads_url;
   ads_thumb_url = ENV.site_url + ENV.ads_thumb_url;
   token: any;
+  categories_url = ENV.categories_url;
 
 
   constructor(public http: HttpClient, public storage: Storage) {
@@ -52,6 +53,10 @@ export class AdsProvider {
         }
         return Observable.of([]);
       });
+  }
+
+  getCategoris() {
+    return this.http.get(this.categories_url);
   }
 
   searchAds(term, page): Observable<any[]> {

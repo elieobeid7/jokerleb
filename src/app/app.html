@@ -25,9 +25,13 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item menuClose no-lines text-uppercase no-padding *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon name="{{p.icon}}" item-left></ion-icon>
-        {{p.title}}
+      <ion-item menuClose no-lines text-uppercase no-padding class="new-post" (click)="goTo('HomePage')">
+        <ion-icon name="md-home" color="grayColor" item-left></ion-icon>
+        Home
+      </ion-item>
+      <ion-item menuClose no-lines text-uppercase no-padding class="new-post" (click)="goTo('CategoriesPage')">
+        <ion-icon name="md-list-box" color="grayColor" item-left></ion-icon>
+        Categories
       </ion-item>
       <div *ngIf="token==true">
         <ion-item menuClose no-lines text-uppercase no-padding class="new-post" (click)="goTo('AddPage')">

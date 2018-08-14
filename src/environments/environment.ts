@@ -6,5 +6,7 @@ export const ENV = {
     ads_search_url: 'wp/v2/ads?search=',
     reset_password_url: 'wp/v2/users/lostpassword',
     register_url: 'wp/v2/users/register',
-    fb_login_url: 'wp/v2/m_facebook/login'
+    fb_login_url: 'wp/v2/m_facebook/login',
+    categories_url: './assets/categories/categories.json',
+    categories_icons_path: './assets/categories/icons/'
 };

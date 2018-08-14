@@ -13,13 +13,11 @@ import { Storage } from '@ionic/Storage';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "HomePage";
+  rootPage: any = "CategoriesPage";
   token: boolean = false;
   user;
   localstorageString;
-
   pages: Array<any>;
-
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private messageServiceProvider: MessageServiceProvider, private commonProvider: CommonProvider, public storage: Storage) {
     this.messageServiceProvider.myAppEvent$.subscribe(ev => {
@@ -29,12 +27,6 @@ export class MyApp {
       }
     });
     this.initializeApp();
-
-    this.pages = [
-      { title: 'Home', component: 'HomePage', icon: 'md-home' }
-
-    ];
-
 
     this.storage.get('loginToken').then((val) => {
       this.user = val;
