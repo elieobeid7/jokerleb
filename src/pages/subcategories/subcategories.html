@@ -9,7 +9,7 @@
 <ion-content padding>
   <ion-list>
 
-    <ion-item class="item-icon-left" *ngFor="let category of categories" (click)="SubCategoriesPage(category);">
+    <ion-item class="item-icon-left" *ngFor="let category of categories" (click)="onLastsubCategory(category);">
       <span *ngIf="category.logo">
         <img src="{{this.categories.path + category.logo}}" alt="{{category.name}}" class="category_icon">
       </span>
