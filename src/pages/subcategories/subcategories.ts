@@ -16,7 +16,7 @@ export class SubcategoriesPage {
     this.categories = this.navParams.get('category');
     this.categories = this.categories.sub;
     this.categories.path = ENV.categories_icons_path;
-    console.log(this.categories);
+    // console.log(this.categories);
 
 
   }
@@ -30,15 +30,15 @@ export class SubcategoriesPage {
       this.navCtrl.push('PostsPage', { category: category });
     }
     // this is all stuff in a category
-    else if (category.main) {
-      this.navCtrl.push('AllCategoriesPage', { category: category });
-    }
+    /*    else if (category.main) {
+         this.navCtrl.push('AllCategoriesPage', { category: category });
+       } */
     // another sub category page
     else if (category.sub && !category.main) {
       this.navCtrl.push('LastsubcategoryPage', { category: category });
     }
     // items page
-    else if (!category.sub && !category.main && !category.admin) {
+    else if ((!category.sub && !category.main && !category.admin) || category.main) {
       this.navCtrl.push('CategoryDetailsPage', { category: category });
     }
   }

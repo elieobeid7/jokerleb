@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ENV } from '../../environments/environment';
 
 /**
  * Generated class for the LastsubcategoryPage page.
@@ -15,11 +16,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LastsubcategoryPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  categories;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LastsubcategoryPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.categories = this.navParams.get('category');
+    this.categories = this.categories.sub;
+    this.categories.path = ENV.categories_icons_path;
+    // console.log(this.categories);
+  }
+  goToCategory(category) {
+    this.navCtrl.push('CategoryDetailsPage', { category: category });
   }
 
 }

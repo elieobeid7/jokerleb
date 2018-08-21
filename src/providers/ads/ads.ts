@@ -41,7 +41,7 @@ export class AdsProvider {
         if (ads.length > 0) {
           console.log(ads);
           return Observable.forkJoin(
-            ads.filter((ad: any) => ad.email.trim().toLowerCase() == email.trim().toLowerCase()).map((ad) => {
+            ads.filter((ad: any) => ad.email.trim().toLowerCase() === email.trim().toLowerCase()).map((ad) => {
               return this.http.get(this.ads_thumb_url + ad.id)
                 .map((res: any) => {
                   let media: any = res;
@@ -54,6 +54,28 @@ export class AdsProvider {
         return Observable.of([]);
       });
   }
+
+  getCategory(slug, page): Observable<any[]> {
+    return this.http.get(this.api_url + "&&per_page=20&&page=" + page)
+      .flatMap((ads: any[]) => {
+        if (ads.length > 0) {
+          return Observable.forkJoin(
+            ads.filter((ad: any) => ad.pure_taxonomies.ad_cat["0"].slug.trim().toLowerCase() === slug.trim().toLowerCase()).map((ad) => {
+              return this.http.get(this.ads_thumb_url + ad.id)
+                .map((res: any) => {
+                  let media: any = res;
+                  ad.media = media;
+                  return ad;
+                });
+            })
+          );
+        }
+        return Observable.of([]);
+      });
+  }
+
+
+
 
   getCategoris() {
     return this.http.get(this.categories_url);
@@ -77,6 +99,8 @@ export class AdsProvider {
         return Observable.of([]);
       });
   }
+
+
   postAds(content, author) {
     let data = {
       title: content,
@@ -99,4 +123,5 @@ export class AdsProvider {
     });
     return this.http.post(this.api_url, data, { headers: headers });
   }
+
 }

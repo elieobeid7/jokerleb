@@ -111,6 +111,7 @@ export class CommonProvider {
       this.storage.set('favorites', JSON.stringify(items));
     });
   }
+
 }
 
 
