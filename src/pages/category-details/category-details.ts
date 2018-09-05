@@ -23,6 +23,8 @@ export class CategoryDetailsPage {
   darkHeader: any;
   category;
   localstorageString;
+  item_category: any;
+
   @ViewChild(Content) content: Content;
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider) {
 
@@ -31,10 +33,51 @@ export class CategoryDetailsPage {
     this.loadAds();
   }
   loadAds(infiniteScroll?) {
-    this.adsProvider.searchAds(this.category.slug, this.page).subscribe((data: any) => {
-      this.items = this.items.concat(data);
-      console.log(this.items);
+    this.adsProvider.getAds(this.page).subscribe((data: any) => {
+      if (!this.category.main) {
+        if (this.category.slug) {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i] !== undefined) {
+              if (data[i].pure_taxonomies.ad_cat[0].slug.trim().toLowerCase() === this.category.slug.trim().toLowerCase()) {
+                this.item_category = data[i].pure_taxonomies.ad_cat[0].term_id;
+                break;
+              }
 
+            }
+          }
+          if (this.item_category !== undefined) {
+            for (let i = 0; i < data.length; i++) {
+              if (data[i].pure_taxonomies !== undefined) {
+                if (data[i].pure_taxonomies.ad_cat[0].term_id === this.item_category ||
+                  data[i].pure_taxonomies.ad_cat[0].slug.trim().toLowerCase() === this.category.slug.trim().toLowerCase()) {
+                  this.items.push(data[i]);
+                }
+              }
+            }
+          }
+        }
+      } else {
+        if (this.category.main === 2) {
+          for (let i = 0; i < data.length; i++) {
+            if (data[i] !== undefined) {
+              if (data[i].pure_taxonomies.ad_cat[0].slug.trim().toLowerCase() === this.category.slug.trim().toLowerCase()) {
+                this.item_category = data[i].pure_taxonomies.ad_cat[0].parent;
+                break;
+              }
+
+            }
+          }
+          if (this.item_category !== undefined) {
+            for (let i = 0; i < data.length; i++) {
+              if (data[i].pure_taxonomies !== undefined) {
+                if (data[i].pure_taxonomies.ad_cat[0].parent === this.item_category) {
+                  this.items.push(data[i]);
+                }
+              }
+            }
+          }
+        }
+      }
       if (infiniteScroll) {
         infiniteScroll.complete();
       }
@@ -43,7 +86,6 @@ export class CategoryDetailsPage {
   loadMore(infiniteScroll) {
     this.page++;
     this.loadAds(infiniteScroll);
-
   }
   onShowItemDetail(item) {
     this.navCtrl.push('SecDetailsPage', { item: item });

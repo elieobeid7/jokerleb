@@ -21,8 +21,6 @@ export class HomePage {
   darkHeader: any;
   @ViewChild(Content) content: Content;
   constructor(public navCtrl: NavController, public navParams: NavParams, public renderer: Renderer, public zone: NgZone, public adsProvider: AdsProvider) {
-
-
     this.loadAds();
   }
 

@@ -29,17 +29,19 @@
         "@ionic-native/status-bar": "4.8.0",
         "@ionic/pro": "1.0.20",
         "@ionic/storage": "^2.1.3",
-        "cordova-android": "^6.2.3",
         "cordova-plugin-camera": "^2.4.1",
         "cordova-plugin-compat": "1.2.0",
         "cordova-plugin-device": "2.0.2",
+        "cordova-plugin-facebook4": "~2.2.0",
+        "cordova-plugin-ionic-webview": "1.1.19",
         "cordova-plugin-splashscreen": "5.0.2",
         "cordova-plugin-statusbar": "2.4.2",
         "cordova-plugin-whitelist": "1.3.3",
+        "cordova-plugin-x-socialsharing": "~5.4.1",
+        "cordova-sqlite-storage": "~2.3.3",
         "intl-tel-input": "12.4.0",
         "ionic-angular": "3.9.2",
         "ionic-img-viewer": "2.9.0",
-        "ionic-plugin-keyboard": "2.2.1",
         "ionicons": "3.0.0",
         "jquery": "3.3.1",
         "rxjs": "5.5.11",
@@ -57,11 +59,16 @@
             "cordova-plugin-splashscreen": {},
             "cordova-plugin-statusbar": {},
             "cordova-plugin-whitelist": {},
-            "ionic-plugin-keyboard": {},
-            "cordova-plugin-camera": {}
+            "cordova-plugin-camera": {},
+            "cordova-plugin-ionic-webview": {},
+            "cordova-plugin-x-socialsharing": {},
+            "cordova-plugin-facebook4": {
+                "APP_ID": "738491166331080",
+                "APP_NAME": "jokerleb",
+                "ANDROID_SDK_VERSION": "4.+"
+            },
+            "cordova-sqlite-storage": {}
         },
-        "platforms": [
-            "android"
-        ]
+        "platforms": []
     }
 }

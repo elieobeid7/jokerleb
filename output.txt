@@ -1,0 +1,44 @@
+Android Studio project detected
+ANDROID_HOME=C:\Android\android-sdk
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_172
+studio
+Subproject Path: CordovaLib
+Subproject Path: app
+publishNonDefault is deprecated and has no effect anymore. All variants are now published.
+The Task.leftShift(Closure) method has been deprecated and is scheduled to be removed in Gradle 5.0. Please use Task.doLast(Action) instead.
+	at build_4jy5safns4ahg2gipcl84q3ka.run(C:\Users\user-pc\Desktop\jokerleb\platforms\android\app\build.gradle:143)
+Configuration 'compile' in project ':app' is deprecated. Use 'implementation' instead.
+:CordovaLib:preBuild UP-TO-DATE
+:CordovaLib:preReleaseBuild UP-TO-DATE
+:CordovaLib:compileReleaseAidl UP-TO-DATE
+:CordovaLib:compileReleaseRenderscript UP-TO-DATE
+:CordovaLib:checkReleaseManifest UP-TO-DATE
+:CordovaLib:generateReleaseBuildConfig UP-TO-DATE
+:CordovaLib:prepareLintJar UP-TO-DATE
+:CordovaLib:generateReleaseResValues UP-TO-DATE
+:CordovaLib:generateReleaseResources UP-TO-DATE
+:CordovaLib:packageReleaseResources UP-TO-DATE
+:CordovaLib:platformAttrExtractor UP-TO-DATE
+:CordovaLib:processReleaseManifest UP-TO-DATE
+:CordovaLib:processReleaseResources UP-TO-DATE
+:CordovaLib:generateReleaseSources UP-TO-DATE
+:CordovaLib:javaPreCompileRelease UP-TO-DATE
+:CordovaLib:compileReleaseJavaWithJavac UP-TO-DATE
+:CordovaLib:processReleaseJavaRes NO-SOURCE
+:CordovaLib:transformClassesAndResourcesWithPrepareIntermediateJarsForRelease UP-TO-DATE
+:app:preBuild UP-TO-DATE
+:app:preReleaseBuild UP-TO-DATE
+:app:compileReleaseAidl UP-TO-DATE
+:CordovaLib:packageReleaseRenderscript NO-SOURCE
+:app:compileReleaseRenderscript UP-TO-DATE
+:app:checkReleaseManifest UP-TO-DATE
+:app:generateReleaseBuildConfig UP-TO-DATE
+:app:prepareLintJar UP-TO-DATE
+:app:generateReleaseResValues UP-TO-DATE
+:app:generateReleaseResources UP-TO-DATE
+:app:mergeReleaseResources UP-TO-DATE
+:app:createReleaseCompatibleScreenManifests UP-TO-DATE
+:app:processReleaseManifest UP-TO-DATE
+:app:splitsDiscoveryTaskRelease UP-TO-DATE
+:app:processReleaseResources FAILED
+25 actionable tasks: 1 executed, 24 up-to-date
